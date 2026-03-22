@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+uv.lock
+
+# Build
+dist/
+target/
+*.exe
+
+# Data (local runtime)
+data/sqlite/*.db
+data/lancedb/
+data/logs/
+data/cache/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Tauri
+src-tauri/target/
+
+# Exports
+data/exports/

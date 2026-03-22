@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Axon-Loop State",
+  "description": "Loop execution state schema",
+  "type": "object",
+  "required": ["version", "loop_session", "task_progress", "execution_stats", "last_updated", "status"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "loop_session": {
+      "type": ["object", "null"],
+      "properties": {
+        "session_id": { "type": "string" },
+        "session_name": { "type": "string" },
+        "started_at": { "type": "string", "format": "date-time" },
+        "task_list_hash": { "type": "string" },
+        "total_tasks": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "task_progress": {
+      "type": "object",
+      "required": ["current_task", "completed", "failed", "skipped", "in_progress"],
+      "properties": {
+        "current_task": { "type": "integer", "minimum": 0 },
+        "completed": { "type": "array", "items": { "type": "integer" } },
+        "failed": { "type": "array", "items": { "type": "integer" } },
+        "skipped": { "type": "array", "items": { "type": "integer" } },
+        "in_progress": {
+          "type": ["object", "null"],
+          "properties": {
+            "task_id": { "type": "integer" },
+            "started_at": { "type": "string", "format": "date-time" },
+            "last_checkpoint": { "type": "string" },
+            "can_resume": { "type": "boolean" },
+            "paused_reason": { "type": "string" }
+          }
+        }
+      }
+    },
+    "execution_stats": {
+      "type": "object",
+      "required": ["completed", "failed", "skipped", "total"],
+      "properties": {
+        "completed": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "integer", "minimum": 0 },
+        "skipped": { "type": "integer", "minimum": 0 },
+        "total": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "last_updated": { "type": ["string", "null"], "format": "date-time" },
+    "status": {
+      "type": "string",
+      "enum": ["idle", "running", "paused", "completed", "aborted"]
+    }
+  }
+}

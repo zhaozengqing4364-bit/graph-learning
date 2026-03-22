@@ -1,0 +1,20 @@
+# {{PROJECT_NAME}} — Codex Project Instructions
+
+## Product North Star
+
+Fill this with the real project essence before relying on automation.
+State what the product is, what it is not, and what value loop should improve over time.
+
+## Core Constraints
+
+- Preserve the existing stack unless the user explicitly requests change.
+- Prefer the smallest direct change that solves the current problem.
+- Do not batch unrelated fixes.
+- Verify every change immediately.
+
+## Safe Grow Workflow
+
+- Use the repository-local skill at `.agents/skills/safe-grow/SKILL.md`.
+- Read `.codex/loop/PROJECT_GROWTH.md`, `.codex/loop/GLM_AUDIT.md`, `.codex/loop/GROWTH_BACKLOG.md`, `.codex/loop/state.json`, and `.codex/loop/log.md`.
+- Process exactly one item per turn.
+- Continue unfinished work before selecting a new item.
